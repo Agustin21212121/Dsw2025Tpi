@@ -1,4 +1,8 @@
 
+using Dsw2025Tpi.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 namespace Dsw2025Tpi.Api;
 
 public class Program
@@ -14,6 +18,8 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddHealthChecks();
+        builder.Services.AddDbContext<Dsw2025TpiContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         var app = builder.Build();
 
@@ -24,7 +30,7 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
+        //app.UseHttpsRedirection();
 
         app.UseAuthorization();
 
