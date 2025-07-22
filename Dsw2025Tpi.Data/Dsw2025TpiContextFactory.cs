@@ -13,7 +13,7 @@ namespace Dsw2025Tpi.Data
         public Dsw2025TpiContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<Dsw2025TpiContext>();
-            optionsBuilder.UseSqlServer("Server=localhost;Database=Dsw2025TpiDb;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=(local)\\SQLEXPRESS;Database=Dsw2025TpiDb;Trusted_Connection=True;TrustServerCertificate=True;");
 
             return new Dsw2025TpiContext(optionsBuilder.Options);
         }
